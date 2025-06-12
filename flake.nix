@@ -28,7 +28,7 @@
       system = "x86_64-linux";
       modules = [
         ./global.nix
-        ./hosts/laptop/laptop.wsl
+        ./hosts/laptop/modules
         agenix.nixosModules.default
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
