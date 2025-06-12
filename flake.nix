@@ -33,7 +33,7 @@
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.nixos = import ./hosts/laptop/home.nix;
+          home-manager.users.zypperia = import ./hosts/laptop/home.nix;
         }
       ];
     };
