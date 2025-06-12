@@ -4,7 +4,7 @@
       main = {
         device = "/dev/sda";
         type = "disk";
-        partitions = {
+        content = {
           boot = {
             size = "1M";
             type = "EF02";
