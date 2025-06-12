@@ -16,17 +16,18 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+#    nur = {
+#      url = "github:nix-community/NUR";
+#      inputs.nixpkgs.follows = "nixpkgs-unstable";
+#    };
 
   };
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nixos-wsl, home-manager, agenix, nur }: {
+  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nixos-wsl, home-manager, agenix }: {
   
     nixosConfigurations.laptop = nixpkgs-unstable.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./global.nix
         ./hosts/laptop/laptop.wsl
         agenix.nixosModules.default
         home-manager.nixosModules.home-manager {

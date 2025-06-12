@@ -4,7 +4,7 @@
 #    ./containers.nix
     ./networking.nix
     ./services.nix
-    ./time.nix
+    ./timers.nix
     ./users.nix
     ./programs.nix
   ];

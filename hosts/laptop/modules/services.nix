@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
+
 {
   services.qemuGuest.enable = true;
 
   services.openssh = {
-    enable = true;
+    enable = false;
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "yes";

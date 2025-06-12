@@ -1,7 +1,9 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  time.timeZone = "Asia/Krasnoyarsk"
 
 #  system.autoUpgrade = {
 #    enable = true;
