@@ -5,7 +5,7 @@
     timerConfig = {
       OnCalendar = "*-*-* 0:00:00";
       Persistent = true;
-    }
+    };
   };
 
   systemd.services."auto-rebuild-switch" = {
@@ -14,5 +14,4 @@
       ${pkgs.systemd}/bin/systemctl kexec
     '';
   };
-
 }
