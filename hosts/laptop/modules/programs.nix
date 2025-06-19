@@ -20,7 +20,7 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-#    wf-recorder
+    wf-recorder
     time-machine
     libnotify
     policycoreutils

@@ -1,5 +1,3 @@
-{ config, pkgs, lib, ... }:
-
 {
   networking = {
     hostName = "laptop-00";

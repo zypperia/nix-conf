@@ -3,11 +3,11 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     catppuccin.url = "github:catppuccin/nix";
 
 #    zen-browser.url = "github:MarceColl/zen-browser-flake";
-
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -69,9 +69,13 @@
       ];
     };
 
-    nixosConfigurations.generic = nixpkgs-stable.lib.nixosSystem {
+    nixosConfigurations.server = nixpkgs-stable.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = [];
+      modules = [
+        ./global.nix
+        ./hosts/server/modules
+        agenix.nixosModules.default
+      ];
     };
   };
 }

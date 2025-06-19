@@ -1,4 +1,3 @@
-{ config, pkgs, lib, ... }:
 {
   services.qemuGuest.enable = true;
 
@@ -6,15 +5,15 @@
     enable = true;
     settings = {
       PasswordAuthentication = false;
-      PermitRootLogin = "yes";
+      PermitRootLogin = "false";
     };
   };
 
-  services.fail2ban = {
+  services.ollama = {
     enable = false;
-    maxretry = 5;
-    bantime = "52h";
+#    acceleration = "cuda";
+    loadModels = [ "mistral" ];
   };
 
-  #virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
 }

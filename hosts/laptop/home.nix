@@ -8,7 +8,6 @@
       niri
       alacritty
       foot
-      wf-recorder
       mpv
       mako
       clang-tools
@@ -31,19 +30,19 @@
   programs.fuzzel = {
     enable = true;
     settings = {
-    colors = {
-      background = "1e1e2edd";
-      text="cdd6f4ff";
-      prompt="bac2deff";
-      placeholder="7f849cff";
-      input="cdd6f4ff";
-      match="cba6f7ff";
-      selection="585b70ff";
-      selection-text="cdd6f4ff";
-      selection-match="cba6f7ff";
-      counter="7f849cff";
-      border="cba6f7ff";
-    };
+      colors = {
+        background = "1e1e2edd";
+        text="cdd6f4ff";
+        prompt="bac2deff";
+        placeholder="7f849cff";
+        input="cdd6f4ff";
+        match="cba6f7ff";
+        selection="585b70ff";
+        selection-text="cdd6f4ff";
+        selection-match="cba6f7ff";
+        counter="7f849cff";
+        border="cba6f7ff";
+      };
     };
   };
 
@@ -87,9 +86,6 @@ if os.path.exists(config.configdir / "theme.py"):
   programs.helix = {
     enable = true;
     defaultEditor = true;
-#    settings = {
-#      theme = "ayu_dark";
-#    };
   };
 
   programs.git = {
