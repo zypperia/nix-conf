@@ -1,8 +1,10 @@
 {
-  containers.ollama = {
-    autoStart = false;
+  containers.minio = {
+    autoStart = true;
     config = { config, pkgs, lib, ... }: {
-      
+      services.minio = {
+        enable = true;
+      };
     };
   };
 }
