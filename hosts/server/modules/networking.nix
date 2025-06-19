@@ -2,11 +2,11 @@
 
 {
   networking = {
-    hostName = "vps";
+    hostName = "server-00";
     
     dhcpcd.enable = true;
     hosts = {
-      "127.0.0.1" = ["localhost" "vps"];
+      "127.0.0.1" = ["localhost" "server-00"];
     };
     
     firewall = {

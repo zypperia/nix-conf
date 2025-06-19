@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
 
-
 {
   users.users.zephyr = {
     isNormalUser = true;
