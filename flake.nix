@@ -86,5 +86,14 @@
 #        }
       ];
     };
+
+    
+    nixosConfigurations.iso = nixpkgs-stable.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./global.nix
+        ./hosts/iso
+      ]
+    };
   };
 }
