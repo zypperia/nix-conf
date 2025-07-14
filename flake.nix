@@ -29,72 +29,72 @@
 #    };
 
   };
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nixos-wsl, home-manager, agenix, catppuccin, microvm, ... }: {
-    nixosConfigurations = {  
-    laptop = nixpkgs-unstable.lib.nixosSystem {
-      system = "x86_64-linux";
-#      specialArgs = { inherit inputs; };
+  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nixos-wsl, home-manager, agenix, catppuccin, microvm }: {
+    #nixosConfigurations = {
+      nixosConfigurations.laptop = nixpkgs-unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+  #      specialArgs = { inherit inputs; };
 
-      modules = [
-        ./global.nix
-        ./hosts/laptop/modules
-        ./hosts/laptop/hardware.nix
-        agenix.nixosModules.default
+        modules = [
+          ./global.nix
+          ./hosts/laptop/modules
+          ./hosts/laptop/hardware.nix
+          agenix.nixosModules.default
 
-#        catppuccin.nixosModules.catppuccin
+  #        catppuccin.nixosModules.catppuccin
 
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.zypperia = {
-            imports = [
-#              catppuccin.homeModules.catppuccin
-              ./hosts/laptop/home.nix
-            ];
-          };
-#          home-manager.extraSpecialArgs = { inherit inputs; };
-        }
-      ];
-    };
-    
-    wsl = nixpkgs-unstable.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./global.nix
-        ./hosts/wsl/wsl.nix
-        agenix.nixosModules.default
-        nixos-wsl.nixosModules.default
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.nixos = import ./hosts/wsl/home.nix;
-        }
-      ];
-    };
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.zypperia = {
+              imports = [
+  #              catppuccin.homeModules.catppuccin
+                ./hosts/laptop/home.nix
+              ];
+            };
+  #          home-manager.extraSpecialArgs = { inherit inputs; };
+          }
+        ];
+      };
 
-    server = nixpkgs-stable.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./global.nix
-        ./hosts/server/modules
-        ./hosts/server/hardware.nix
-        agenix.nixosModules.default
-#        microvm.nixosModules.microvm
-#        {
-#          networking.hostName = "my-microvm";
-#          microvm.hypervisor = "cloud-hypervisor";
-#        }
-      ];
-    };
+      nixosConfigurations.wsl = nixpkgs-unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./global.nix
+          ./hosts/wsl/wsl.nix
+          agenix.nixosModules.default
+          nixos-wsl.nixosModules.default
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nixos = import ./hosts/wsl/home.nix;
+          }
+        ];
+      };
 
-    
-    iso = nixpkgs-stable.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./global.nix
-        ./hosts/iso
-      ];
-    };
-    };
+      nixosConfigurations.server = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./global.nix
+          ./hosts/server/modules
+          ./hosts/server/hardware.nix
+          agenix.nixosModules.default
+  #        microvm.nixosModules.microvm
+  #        {
+  #          networking.hostName = "my-microvm";
+  #          microvm.hypervisor = "cloud-hypervisor";
+  #        }
+        ];
+      };
+
+
+      nixosConfigurations.iso = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./global.nix
+          ./hosts/iso
+        ];
+      };
+      #    };
   };
 }
