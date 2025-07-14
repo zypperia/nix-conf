@@ -29,11 +29,11 @@
 #    };
 
   };
-  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nixos-wsl, home-manager, agenix, catppuccin, microvm, ... } @ inputs: {
-  
-    nixosConfigurations.laptop = nixpkgs-unstable.lib.nixosSystem {
+  outputs = { self, nixpkgs-stable, nixpkgs-unstable, nixos-wsl, home-manager, agenix, catppuccin, microvm, ... }: {
+    nixosConfigurations = {  
+    laptop = nixpkgs-unstable.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+#      specialArgs = { inherit inputs; };
 
       modules = [
         ./global.nix
@@ -41,23 +41,23 @@
         ./hosts/laptop/hardware.nix
         agenix.nixosModules.default
 
-        catppuccin.nixosModules.catppuccin
+#        catppuccin.nixosModules.catppuccin
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.zypperia = {
             imports = [
-              catppuccin.homeModules.catppuccin
+#              catppuccin.homeModules.catppuccin
               ./hosts/laptop/home.nix
             ];
           };
-          home-manager.extraSpecialArgs = { inherit inputs; };
+#          home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
     };
     
-    nixosConfigurations.wsl = nixpkgs-unstable.lib.nixosSystem {
+    wsl = nixpkgs-unstable.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./global.nix
@@ -72,7 +72,7 @@
       ];
     };
 
-    nixosConfigurations.server = nixpkgs-stable.lib.nixosSystem {
+    server = nixpkgs-stable.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./global.nix
@@ -88,12 +88,13 @@
     };
 
     
-    nixosConfigurations.iso = nixpkgs-stable.lib.nixosSystem {
+    iso = nixpkgs-stable.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./global.nix
         ./hosts/iso
-      ]
+      ];
+    };
     };
   };
 }
