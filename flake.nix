@@ -8,8 +8,6 @@
     catppuccin.url = "github:catppuccin/nix";
     microvm.url = "github:astro/microvm.nix";
 
-#    sops-nix.url = "github:Mic92/sops-nix";
-
 #    zen-browser.url = "github:MarceColl/zen-browser-flake";
 
     agenix = {

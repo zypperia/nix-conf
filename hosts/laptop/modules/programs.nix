@@ -24,5 +24,5 @@ in
     time-machine
     libnotify
     policycoreutils
-  ];  
+  ];
 }

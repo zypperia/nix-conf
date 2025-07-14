@@ -17,19 +17,27 @@
     ];
   };
 
+  /*
   catppuccin = {
     enable = true;
     flavor = "frappe";
-  };
+  };*/
 
-  wayland.windowManager.river = {
+  wayland.windowManager.sway = {
     enable = true;
+    package = pkgs.swayfx;
+    wrapperFeatures.gtk = true;
+    config = rec {
+      modifier = "Mod4";
+      terminal = "alacritty";
+    };
   };
 
   # Mauve
   programs.fuzzel = {
     enable = true;
-    settings = {
+
+    /* settings = {
       colors = {
         background = "1e1e2edd";
         text="cdd6f4ff";
@@ -43,7 +51,8 @@
         counter="7f849cff";
         border="cba6f7ff";
       };
-    };
+    }; */
+
   };
 
   programs.foot = {
@@ -65,7 +74,7 @@
     settings = {
       colors.webpage.darkmode.enabled = true;
     };
-    extraConfig = ''
+    /* extraConfig = ''
 import os
 from urllib.request import urlopen
 
@@ -80,7 +89,7 @@ if not os.path.exists(config.configdir / "theme.py"):
 if os.path.exists(config.configdir / "theme.py"):
     import theme
     theme.setup(c, 'mocha', True)
-    '';
+    ''; */
   };
 
   programs.helix = {
