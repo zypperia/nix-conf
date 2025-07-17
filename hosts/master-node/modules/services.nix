@@ -2,7 +2,7 @@
 let
   # When using easyCerts=true the IP Address must resolve to the master on creation.
  # So use simply 127.0.0.1 in that case. Otherwise you will have errors like this https://github.com/NixOS/nixpkgs/issues/59364
-  kubeMasterIP = "";
+  kubeMasterIP = "100.75.83.138";
   kubeMasterHostname = "master-node";
   kubeMasterAPIServerPort = 6443;
 in
@@ -25,7 +25,7 @@ in
   services.kubernetes = {
     roles = ["master" "node"];
     masterAddress = kubeMasterHostname;
-    #apiserverAddress = "https://${kubeMasterHostname}:${toString kubeMasterAPIServerPort}";
+    apiserverAddress = "https://${kubeMasterHostname}:${toString kubeMasterAPIServerPort}";
     easyCerts = true;
     apiserver = {
       securePort = kubeMasterAPIServerPort;
