@@ -4,22 +4,15 @@
 #  nix.package = pkgs.lix;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  system.stateVersion = "25.05";
-
   time.timeZone = "Asia/Krasnoyarsk";
 
   hardware.graphics.enable = true;
 
-#  system.autoUpgrade = {
-#    enable = true;
-#    flake = inputs.self.outPath;
-#    flags = [
-#      "--update-input"
-#      "nixpkgs-unstable"
-#      "-L"
-#    ];
-#    dates = "00:00";
-#  };
+  i18n.supportedLocales = [
+    "en_US.UTF-8/UTF-8"
+  ];
+
+  i18n.defaultLocale = "en_US.UTF-8"
 
   documentation.man.enable = false;
 }
