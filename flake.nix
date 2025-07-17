@@ -89,16 +89,15 @@
         ];
       };
 
-      /* server = nixpkgs.lib.nixosSystem {
+      worker-node = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./global.nix
-          ./hosts/server/modules
-          ./hosts/server/hardware.nix
+          ./hosts/worker-node/modules
+          ./hosts/worker-node/hardware.nix
           agenix.nixosModules.default
         ];
-      }; */
-
+      };
 
       nixosConfigurations.iso = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
