@@ -1,10 +1,10 @@
 {
   networking = {
-    hostName = "master-node";
+    hostName = "worker-node";
 
     dhcpcd.enable = true;
     hosts = {
-      "127.0.0.1" = ["localhost" "master-node"];
+      "127.0.0.1" = ["localhost" "worker-node"];
     };
 
     nftables.enable = true;
