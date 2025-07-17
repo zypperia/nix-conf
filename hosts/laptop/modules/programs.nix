@@ -1,13 +1,11 @@
 { pkgs, ...}:
-let
+/*let
   time-machine = pkgs.writeShellScriptBin "time-machine" ''
     wf-recorder -f time-machine/$(date +%Y-%m-%d0).mkv
   '';
-in
+in */
 {
   programs.virt-manager.enable = true;
-
-  programs.fish.enable = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -21,7 +19,7 @@ in
 
   environment.systemPackages = with pkgs; [
     wf-recorder
-    time-machine
+    #time-machine
     libnotify
     policycoreutils
   ];

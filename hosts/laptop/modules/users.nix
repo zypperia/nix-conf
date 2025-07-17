@@ -2,7 +2,7 @@
 
 {
   users = {
-    defaultUserShell = pkgs.fish;
+    #defaultUserShell = pkgs.xonsh;
 
     users.zypperia = {
       isNormalUser = true;

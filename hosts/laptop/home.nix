@@ -4,8 +4,11 @@
     homeDirectory = "/home/zypperia";
     stateVersion = "25.05";
 
+    #sessionVariables = {};
+
     packages = with pkgs; [
       niri
+      kitty
       alacritty
       foot
       mpv
@@ -23,14 +26,9 @@
     flavor = "frappe";
   };*/
 
-  wayland.windowManager.sway = {
+  wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.swayfx;
-    wrapperFeatures.gtk = true;
-    config = rec {
-      modifier = "Mod4";
-      terminal = "alacritty";
-    };
+    xwayland.enable = true;
   };
 
   # Mauve
