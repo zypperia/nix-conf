@@ -4,6 +4,8 @@ Host:
   - WSL
   - laptop-00
   - server-00
+  - master-node
+  - worker-node
 
 Generate hardware config:
 
