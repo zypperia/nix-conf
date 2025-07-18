@@ -5,7 +5,7 @@
     dhcpcd.enable = true;
     hosts = {
       "127.0.0.1" = ["localhost" "worker-node"];
-      "100.75.83.138" = ["master-node"];
+      "100.75.70.58" = ["master-node"];
     };
 
     nftables.enable = true;
