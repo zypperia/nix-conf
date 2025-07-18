@@ -22,6 +22,8 @@ in
   };
 
   # Cluster stuff
+  networking.extraHosts = "${kubeMasterIP} ${kubeMasterHostname}";
+
   services.kubernetes = {
     roles = ["master" "node"];
     masterAddress = kubeMasterHostname;
