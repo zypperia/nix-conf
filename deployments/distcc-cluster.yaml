@@ -4,7 +4,7 @@ metadata:
   name: distcc-pod
 spec:
   containers:
-    - image: ghcr.io/zypperia/ditcc
+    - image: ghcr.io/zypperia/ditcc:main
       name: distccd
       ports:
         - containerPort: 3632    
