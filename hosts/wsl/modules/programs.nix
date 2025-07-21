@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       logo = {
-        source = "nixos_small";
+        source = "assets/nixos-fastfetch";
       };
       modules = [
         {
