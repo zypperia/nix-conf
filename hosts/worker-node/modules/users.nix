@@ -2,7 +2,7 @@
 
 {
   users = {
-    defaultUserShell = pkgs.xonsh;
+    #defaultUserShell = pkgs.xonsh;
     users = {
       zephyr = {
         isNormalUser = true;
