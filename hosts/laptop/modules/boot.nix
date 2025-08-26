@@ -12,17 +12,17 @@ in
     resumeDevice = "/dev/disk/by-uuid/4fd72e0e-a072-4cc3-b855-1ed2ded4f916";
     kernelPackages = pkgs.linuxPackages_zen;
     loader = {
-      systemd-boot.enable = true;
-      /*grub = {
+      #systemd-boot.enable = true;
+      grub = {
         device = "nodev";
         enable = true;
         useOSProber = true;
         efiSupport = true;
         splashImage = splash;
       };
-      efi.canTouchEfiVariables = true;*/
+      efi.canTouchEfiVariables = true;
     };
-    supportedFilesystems = [ "btrfs" ];
+    #supportedFilesystems = [ "btrfs" ];
   };
 
   hardware = {
