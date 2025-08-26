@@ -42,7 +42,7 @@
     };
 
     firewall = {
-      enable = true;
+      enable = false;
       allowedTCPPorts = [ 2222 4444 ];
       allowedUDPPorts = [ 51830 ];
     };

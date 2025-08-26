@@ -1,5 +1,6 @@
 let
-  image = builtins.fetchurl { url = "https://raw.githubusercontent.com/zypperia/nix-conf/refs/heads/main/assets/wallpaper-theme-converter.png"; sha256 = "5ab354df48f6643f3b80f8a0a7f233838e2d1b60664c8d62cc87140c40af5f24"; };
+  #image = builtins.fetchurl { url = "https://raw.githubusercontent.com/zypperia/nix-conf/refs/heads/main/assets/wallpaper-theme-converter.png"; sha256 = "5ab354df48f6643f3b80f8a0a7f233838e2d1b60664c8d62cc87140c40af5f24"; };
+  image = builtins.fetchurl { url = "https://github.com/zypperia/nix-conf/blob/main/assets/wallpaper-nord.png?raw=true"; sha256 = "8e77f53b01415b907a63729776dee0aa6f342790a20088b9b8337655501ff877"; };
 in
 
 {
@@ -34,6 +35,7 @@ in
       appimage-run
       
       bat
+      wget
       niri
       alacritty
       nautilus
@@ -53,10 +55,16 @@ in
       rmpc
       yazi
       gnome-text-editor
+      xdg-desktop-portal-hyprland
 
       virt-manager
+      docker-compose
+      obsidian
       nitch
-      blender
+      /*(blender.override {
+        cudaSupport = true;
+      })*/
+      #unityhub
       kicad
       dconf
       typst
@@ -70,6 +78,7 @@ in
       vscode
 
       uv
+      arch-install-scripts
       llvm
       lld
       clang
@@ -94,10 +103,9 @@ in
     enable = true;
     polarity = "dark";
     #image = image;
-    image = "/home/zypperia/nix-conf/assets/wallpaper-nord.png";
 
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     targets.zen-browser.profileNames = [ "default" ];
     opacity = {
       terminal = 0.85;
@@ -128,9 +136,25 @@ in
     };
   };
 
+  xdg.portal.enable = true;
+  xdg.portal.config.common.default = "hyprland";
+
   wayland.windowManager.river.enable = true;
 
-  programs.waybar.enable = true;
+  programs.eww.enable = true;
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    flake = "/home/zypperia/nix-conf";
+  };
+  
+  #programs.starship.enable = true;
+  programs.bash = {
+    enable = true;
+    #promptInit = "eval \"$(starship init bash)\"";
+    #initExtra = "eval \"$(starship init bash)\"";
+  };
   
   wayland.windowManager.hyprland = {
     enable = true;
@@ -363,7 +387,7 @@ in
     };
   };
 
-  programs.obsidian = {
+  /*programs.obsidian = {
     enable = true;
 #    defaultSettings = {
 #    };
@@ -378,11 +402,11 @@ in
             "remotely-save"
 
           ];
-        };*/
+        };
         
       };
     };
-  };
+  };*/
 
   programs.element-desktop.enable = true;
 
@@ -392,6 +416,10 @@ in
       kali = {
         image = "docker.io/kalilinux/kali-rolling:latest";
         additional_packages = "kali-linux-core kali-linux-default";
+      };
+      debian = {
+        image = "docker.io/debian:latest";
+        additional_packages = "systemd";
       };
     };
   };
@@ -422,6 +450,10 @@ in
       telemetry = {
         metrics = false;
         diagnostics = false;
+      };
+
+      project_panel = {
+        dock = "right";
       };
     };
   };
