@@ -14,22 +14,22 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4fd72e0e-a072-4cc3-b855-1ed2ded4f916";
-      fsType = "xfs";
+    { device = "/dev/disk/by-uuid/d70c00b1-6260-4b0a-9ac6-cc0e1655cf71";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/9C51-6523";
+    { device = "/dev/disk/by-uuid/F590-A5FB";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 15616; # 15.25 * 1024;
-    }
-  ];
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/73cdbdb7-35f6-44d4-9d87-043ecbf174e0";
+      fsType = "ext4";
+    };
+
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

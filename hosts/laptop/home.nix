@@ -7,6 +7,7 @@ in
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -61,9 +62,9 @@ in
       docker-compose
       obsidian
       nitch
-      /*(blender.override {
+      (blender.override {
         cudaSupport = true;
-      })*/
+      })
       #unityhub
       kicad
       dconf
@@ -105,7 +106,8 @@ in
     #image = image;
 
     #base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    #base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
     targets.zen-browser.profileNames = [ "default" ];
     opacity = {
       terminal = 0.85;
@@ -139,9 +141,15 @@ in
   xdg.portal.enable = true;
   xdg.portal.config.common.default = "hyprland";
 
+  gtk = {
+    enable = true;
+    iconTheme.name = lib.mkForce "Papirus Dark";
+    iconTheme.package = pkgs.papirus-icon-theme;
+  };
+
   wayland.windowManager.river.enable = true;
 
-  programs.eww.enable = true;
+  programs.btop.enable = true;
 
   programs.nh = {
     enable = true;
@@ -333,6 +341,7 @@ in
       ];
     };
   };
+
 
   programs.niriswitcher = {
     enable = true;
